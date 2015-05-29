@@ -20,29 +20,7 @@ export default class VideosList extends React.Component {
             <div>
               <section className="votes">V</section>
               <img src="" alt=""/>
-              <a href="">This is a regular video title</a>
-              <div className="videoInfo">
-                <p>David Lynch</p>
-                <p>1month ago * 2 views</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div>
-              <section className="votes">V</section>
-              <img src="" alt=""/>
-              <a href="">This is a regular video title</a>
-              <div className="videoInfo">
-                <p>David Lynch</p>
-                <p>1month ago * 2 views</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div>
-              <section className="votes">V</section>
-              <img src="" alt=""/>
-              <a href="">This is a regular video title</a>
+              <a href="">video regular title</a>
               <div className="videoInfo">
                 <p>David Lynch</p>
                 <p>1month ago * 2 views</p>
