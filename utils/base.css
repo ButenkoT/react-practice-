@@ -36,7 +36,7 @@ section{
     margin: 0 auto;
 }
 
-.submitForm{
+.submitForm, .videosList{
     max-width: 50rem;
     margin: 0 auto;
 }
@@ -51,10 +51,13 @@ form div{
 }
 
 form{
+    border-bottom: 1px solid black;
+}
+
+form, ol, .videosListHeader{
     margin: 0 auto;
     max-width: 30rem;
     padding: 1rem 1rem;
-    border-bottom: 1px solid black;
 }
 
 form input{
@@ -65,6 +68,14 @@ form input{
 
 button{
    height: 2rem;
+}
+
+.votes, img, .videoInfo, .sorting, .videosList h4{
+    display: inline-block;
+}
+
+.videosList h4{
+    margin: 0 3rem;
 }
 
 footer {
