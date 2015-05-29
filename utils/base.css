@@ -30,6 +30,43 @@ header {
     text-align: center;
 }
 
+section{
+    max-width: 60rem;
+    padding: 0.8rem;
+    margin: 0 auto;
+}
+
+.submitForm{
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.submitForm h4{
+    text-align: center;
+    margin: 1rem;
+}
+
+form div{
+    margin-bottom: 1rem;
+}
+
+form{
+    margin: 0 auto;
+    max-width: 30rem;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid black;
+}
+
+form input{
+    width: 25rem;
+    height: 2rem;
+    display: block;
+}
+
+button{
+   height: 2rem;
+}
+
 footer {
     position: fixed;
     bottom: 0;
@@ -41,10 +78,4 @@ footer {
     text-align: right;
     padding-right: 0.8rem;
     box-sizing: border-box;
-}
-
-section{
-    max-width: 60rem;
-    padding: 0.8rem;
-    margin: 0 auto;
 }

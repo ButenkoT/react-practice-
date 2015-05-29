@@ -4,7 +4,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <header>
-        <p>New app</p>
+        <p>15 Minutes Video Competition</p>
       </header>
     );
   }

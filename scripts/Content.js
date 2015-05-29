@@ -1,10 +1,13 @@
 import React from 'react';
+import Form from './Form';
+import VideosList from './VideosList';
 
 export default class Content extends React.Component {
   render() {
     return (
       <section>
-        <h1>hello</h1>
+        <Form />
+        <VideosList />
       </section>
     );
   }
