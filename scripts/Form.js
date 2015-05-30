@@ -1,15 +1,19 @@
-import React from 'react'
-
+const React = require('react');
+const VideoService = require('./VideoService.js');
 
 const Form = React.createClass({
 
   onSubmit(e) {
     e.preventDefault();
+
+    let video = {};
     for (let key in this.refs) {
       if (this.refs.hasOwnProperty(key)) {
-        console.log(key, this.refs[key].getDOMNode().value)
+        video[key] = this.refs[key].getDOMNode().value;
       }
     }
+
+    VideoService.create(video);
   },
 
   render() {
