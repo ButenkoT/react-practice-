@@ -2,55 +2,86 @@ const EventEmitter = require('events').EventEmitter;
 const AppDispatcher = require('./dispatcher/AppDispatcher');
 const AppConstants = require('./constants/AppConstants');
 
-let videos = {};
+const _id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+let videos = {
+  [_id]: {
+    id: _id,
+    time: new Date,
+    title: "Funny cats",
+    url: "https://youtu.be/nPER_vv2SyU",
+    name: "David",
+    email: "hello@hello.com",
+    views: 0
+  },
+
+  [_id]: {
+    id: _id,
+    time: new Date,
+    title: "Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon",
+    url: "https://youtu.be/kIeCdrSED4g",
+    name: "Samantha",
+    email: "hello@me.com",
+    views: 0
+  }
+};
 
 function update(id, updates) {
   videos[id] = Object.assign({}, videos[id], updates);
 }
 
+function create(video) {
+  var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+  videos[id] = {
+    id: id,
+    time: new Date,
+    title: video.title,
+    url: video.url,
+    name: video.name,
+    email: video.email,
+    views: 0
+  };
+}
+
+function incrementView(id) {
+  update(id, {views: videos[id].views + 1})
+}
+
+
 const VideoStore = Object.assign({}, EventEmitter.prototype, {
 
-  getAll: function() {
+  getAll: function () {
     return videos;
   },
 
-  create: function(video){
-    var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-    videos[id] = {
-      id: id,
-      title: video.title,
-      url: video.url,
-      name: video.name,
-      email: video.email
-    };
-    this.emit('change');
-  },
-
-  addChangeListener: function(callback) {
+  addChangeListener: function (callback) {
     this.on('change', callback);
   },
 
-  removeChangeListener: function(callback) {
+  removeChangeListener: function (callback) {
     this.removeListener('change', callback);
   }
 
 });
 
-AppDispatcher.register(function(action) {
-  let video;
-
-  switch(action.actionType) {
+AppDispatcher.register(function (action) {
+  switch (action.actionType) {
     case AppConstants.VIDEO_CREATE:
-      video = action.video.trim();
-      if (video !== '') {
-        VideoStore.create(video);
+      const video = action.video.trim();
+      if (video) {
+        create(video);
         VideoStore.emit('change');
       }
       break;
 
+    case AppConstants.VIDEO_INCREMENT_VIEW:
+      const id = action.id;
+      incrementView(id);
+      VideoStore.emit('change');
+      break;
+
     case AppConstants.VIDEO_UPDATE:
-      video = action.video.trim();
-      if (video !== '') {
+      const video = action.video;
+      if (video) {
         update(action.id, {video: video});
         VideoStore.emit('change');
       }

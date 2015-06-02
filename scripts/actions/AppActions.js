@@ -3,24 +3,37 @@ const AppConstants = require('../constants/AppConstants');
 
 const AppActions = {
 
-  create: function(video) {
+  create(video) {
     AppDispatcher.dispatch({
       actionType: AppConstants.VIDEO_CREATE,
-      title: video.title,
-      url: video.url,
-      name: video.name,
-      email: video.email
+      video: {
+        time: new Date,
+        title: video.title,
+        url: video.url,
+        name: video.name,
+        email: video.email,
+        views: 0
+      }
     });
   },
 
-  update: function(id, video) {
+  incrementView(videoId){
+    AppDispatcher.dispatch({
+      actionType: AppConstants.VIDEO_INCREMENT_VIEW,
+      id: videoId
+    });
+  },
+
+  update(id, video) {
     AppDispatcher.dispatch({
       actionType: AppConstants.VIDEO_UPDATE,
-      id: id,
-      title: video.title,
-      url: video.url,
-      name: video.name,
-      email: video.email
+      video: {
+        id: id,
+        title: video.title,
+        url: video.url,
+        name: video.name,
+        email: video.email
+      }
     });
   }
 
