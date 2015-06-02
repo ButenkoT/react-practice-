@@ -1,5 +1,8 @@
 const _ = require('lodash');
 const moment = require('moment');
+const URL = require('url');
+const PATH = require('path');
+const querystring = require('querystring');
 const React = require('react');
 const VideoService = require('./VideoService');
 const AppActions = require('./actions/AppActions');
@@ -12,6 +15,19 @@ function getVideoState() {
 
 const VideoItem = React.createClass({
 
+  video_image(url){
+    let path;
+    let urlObject = URL.parse(url);
+
+    if (urlObject.hostname == "youtu.be"){
+      path = PATH.basename(urlObject.pathname);
+    } else {
+      let queryCode = querystring.parse(urlObject.query);
+      path = queryCode.v;
+    }
+    return `http://img.youtube.com/vi/${path}/2.jpg`;
+  },
+
   countViews() {
     AppActions.incrementView(this.props.video.id);
   },
@@ -23,6 +39,7 @@ const VideoItem = React.createClass({
   render() {
     const {video} = this.props;
     const timeVideoAdded = moment().startOf(video.time).fromNow();
+    const videoImage = this.video_image(video.url);
     return (
       <li>
         <div>
@@ -30,7 +47,7 @@ const VideoItem = React.createClass({
             <img src="scripts/images/votes_up_arrow.png"/>
             {video.votes}
           </section>
-          <img src="" alt=""/>
+          <img src={videoImage} alt=""/>
           <a href={video.url} onClick={this.countViews} target="_blank">{video.title}</a>
 
           <div className="videoInfo">
