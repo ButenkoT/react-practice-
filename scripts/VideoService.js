@@ -1,6 +1,12 @@
 const EventEmitter = require('events').EventEmitter;
+const AppDispatcher = require('./dispatcher/AppDispatcher');
+const AppConstants = require('./constants/AppConstants');
 
-let videos = [];
+let videos = {};
+
+function update(id, updates) {
+  videos[id] = Object.assign({}, videos[id], updates);
+}
 
 const VideoStore = Object.assign({}, EventEmitter.prototype, {
 
@@ -8,8 +14,15 @@ const VideoStore = Object.assign({}, EventEmitter.prototype, {
     return videos;
   },
 
-  create: function(video) {
-    videos.push(video);
+  create: function(video){
+    var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+    videos[id] = {
+      id: id,
+      title: video.title,
+      url: video.url,
+      name: video.name,
+      email: video.email
+    };
     this.emit('change');
   },
 
@@ -20,9 +33,34 @@ const VideoStore = Object.assign({}, EventEmitter.prototype, {
   removeChangeListener: function(callback) {
     this.removeListener('change', callback);
   }
+
 });
 
-module.exports = VideoStore;
+AppDispatcher.register(function(action) {
+  let video;
+
+  switch(action.actionType) {
+    case AppConstants.VIDEO_CREATE:
+      video = action.video.trim();
+      if (video !== '') {
+        VideoStore.create(video);
+        VideoStore.emit('change');
+      }
+      break;
+
+    case AppConstants.VIDEO_UPDATE:
+      video = action.video.trim();
+      if (video !== '') {
+        update(action.id, {video: video});
+        VideoStore.emit('change');
+      }
+      break;
+
+    default:
+  }
+});
+
+export default VideoStore;
 
 
 

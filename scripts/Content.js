@@ -1,14 +1,23 @@
-import React from 'react';
-import Form from './Form';
-import VideosList from './VideosList';
+const React = require('react');
+const Form = require('./Form');
+const VideosList = require('./VideosList');
+const AppActions = require('./actions/AppActions');
 
-export default class Content extends React.Component {
+const Content = React.createClass({
   render() {
     return (
       <section>
-        <Form />
+        <Form onSave={this._onSave}/>
         <VideosList />
       </section>
     );
+  },
+
+  _onSave: function(video) {
+    if (video.trim()) {
+      AppActions.create(video);
+    }
   }
-}
+});
+
+export default Content;
