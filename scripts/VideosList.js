@@ -45,7 +45,7 @@ const VideosList = React.createClass({
                 <p>David Lynch</p>
                 <p>1month ago * 2 views</p>
               </div>
-              <div>allVideo={JSON.stringify(this.state.allVideo)}</div>
+              <div> {JSON.stringify(this.state.allVideo)}</div>
             </div>
           </li>
         </ol>
