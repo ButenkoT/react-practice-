@@ -1,5 +1,8 @@
+const _ = require('lodash');
+const moment = require('moment');
 const React = require('react');
-const VideoService = require('./VideoService.js');
+const VideoService = require('./VideoService');
+const AppActions = require('./actions/AppActions');
 
 function getVideoState() {
   return {
@@ -7,22 +10,54 @@ function getVideoState() {
   };
 }
 
+const VideoItem = React.createClass({
+
+  countViews(e) {
+    //e.preventDefault();
+    AppActions.incrementView(this.props.video.id);
+  },
+
+  render() {
+    const {video} = this.props;
+    const timeVideoAdded = moment().startOf(video.time).fromNow();
+    return (
+      <li>
+        <div>
+          <section className="votes">V</section>
+          <img src="" alt=""/>
+          <a href={video.url} onClick={this.countViews}>{video.title}</a>
+
+          <div className="videoInfo">
+            <p>{video.name}</p>
+
+            <p>{timeVideoAdded} * {video.views} views</p>
+          </div>
+        </div>
+      </li>
+    );
+  }
+});
+
 const VideosList = React.createClass({
 
-  getInitialState: function() {
+  getInitialState: function () {
     return getVideoState();
   },
 
-  componentDidMount: function() {
+  componentDidMount: function () {
     VideoService.addChangeListener(this._onChange);
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount: function () {
     VideoService.removeChangeListener(this._onChange);
   },
 
   render(){
-    return(
+
+    let Videos = _.map(this.state.allVideo, (video, id) =>
+      <VideoItem key={id} video={video}/>);
+
+    return (
       <div className="videosList">
         <div className="videosListHeader">
           <h4>Latest Videos</h4>
@@ -34,28 +69,16 @@ const VideosList = React.createClass({
             </select>
           </div>
         </div>
+        <ol>{Videos}</ol>
 
-        <ol>
-          <li>
-            <div>
-              <section className="votes">V</section>
-              <img src="" alt=""/>
-              <a href="">video regular title</a>
-              <div className="videoInfo">
-                <p>David Lynch</p>
-                <p>1month ago * 2 views</p>
-              </div>
-              <div> {JSON.stringify(this.state.allVideo)}</div>
-            </div>
-          </li>
-        </ol>
       </div>
     );
   },
 
-  _onChange: function() {
+  _onChange: function () {
     this.setState(getVideoState());
   }
+
 });
 
 export default VideosList;

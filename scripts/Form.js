@@ -1,6 +1,6 @@
 const React = require('react');
 const ReactPropTypes = React.PropTypes;
-const VideoService = require('./VideoService.js');
+const AppActions = require('./actions/AppActions');
 
 const Form = React.createClass({
 
@@ -11,7 +11,7 @@ const Form = React.createClass({
     value: ReactPropTypes.string
   },
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       title: this.props.title || '',
       url: this.props.url || '',
@@ -31,13 +31,13 @@ const Form = React.createClass({
 
     let video = {};
 
-      for (let key in this.refs) {
-        if (this.refs.hasOwnProperty(key)) {
-          video[key] = this.refs[key].getDOMNode().value;
-        }
+    for (let key in this.refs) {
+      if (this.refs.hasOwnProperty(key)) {
+        video[key] = this.refs[key].getDOMNode().value;
       }
+    }
 
-      VideoService.create(video);
+    AppActions.create(video);
   },
 
   render() {
@@ -57,14 +57,14 @@ const Form = React.createClass({
               //value={this.state.title}
               autoFocus={true}
               required
-            />
+              />
           </div>
           <div>YouTube URL
             <input
               ref="url"
               type="text"
               required
-            />
+              />
           </div>
           <div>Your name
             <input
@@ -72,14 +72,14 @@ const Form = React.createClass({
               type="text"
               placeholder="anonymous"
               defaultValue="anonymous"
-            />
+              />
           </div>
           <div>Your email address
             <input
               ref="email"
               type="text"
               placeholder="(optional)"
-            />
+              />
           </div>
           <button type="submit">Submit entry</button>
         </form>
@@ -87,20 +87,20 @@ const Form = React.createClass({
     );
   },
 
-  _save: function() {
+  _save: function () {
     this.props.onSave(this.state.value);
     this.setState({
       value: ''
     });
   },
 
-  _onChange: function(event) {
+  _onChange: function (event) {
     this.setState({
       value: event.target.value
     });
   },
 
-  _onKeyDown: function(event) {
+  _onKeyDown: function (event) {
     if (event.keyCode === 13) {
       this._save();
     }
