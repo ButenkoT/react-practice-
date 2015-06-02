@@ -11,7 +11,8 @@ let videos = {
     url: "https://youtu.be/nPER_vv2SyU",
     name: "David",
     email: "hello@hello.com",
-    views: 0
+    views: 0,
+    votes: 0
   },
 
   [_id]: {
@@ -21,7 +22,8 @@ let videos = {
     url: "https://youtu.be/kIeCdrSED4g",
     name: "Samantha",
     email: "hello@me.com",
-    views: 0
+    views: 0,
+    votes: 0
   }
 };
 
@@ -38,7 +40,8 @@ function create(video) {
     url: video.url,
     name: video.name,
     email: video.email,
-    views: 0
+    views: 0,
+    votes: 0
   };
 }
 
@@ -46,6 +49,9 @@ function incrementView(id) {
   update(id, {views: videos[id].views + 1})
 }
 
+function incrementVotes(id){
+  update(id, {votes: videos[id].votes + 1})
+}
 
 const VideoStore = Object.assign({}, EventEmitter.prototype, {
 
@@ -66,7 +72,7 @@ const VideoStore = Object.assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (action) {
   switch (action.actionType) {
     case AppConstants.VIDEO_CREATE:
-      const video = action.video.trim();
+      const video = action.video;
       if (video) {
         create(video);
         VideoStore.emit('change');
@@ -76,6 +82,12 @@ AppDispatcher.register(function (action) {
     case AppConstants.VIDEO_INCREMENT_VIEW:
       const id = action.id;
       incrementView(id);
+      VideoStore.emit('change');
+      break;
+
+    case AppConstants.VIDEO_INCREMENT_VOTES:
+      const id = action.id;
+      incrementVotes(id);
       VideoStore.emit('change');
       break;
 

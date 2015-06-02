@@ -13,8 +13,13 @@ function getVideoState() {
 const VideoItem = React.createClass({
 
   countViews(e) {
-    //e.preventDefault();
+    e.preventDefault();
     AppActions.incrementView(this.props.video.id);
+  },
+
+  countVotes(e){
+    e.preventDefault();
+    AppActions.incrementVotes(this.props.video.id);
   },
 
   render() {
@@ -23,7 +28,7 @@ const VideoItem = React.createClass({
     return (
       <li>
         <div>
-          <section className="votes">V</section>
+          <section className="votes" onClick={this.countVotes}>V {video.votes}</section>
           <img src="" alt=""/>
           <a href={video.url} onClick={this.countViews}>{video.title}</a>
 

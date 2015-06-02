@@ -24,6 +24,13 @@ const AppActions = {
     });
   },
 
+  incrementVotes(videoId){
+    AppDispatcher.dispatch({
+      actionType: AppConstants.VIDEO_INCREMENT_VOTES,
+      id: videoId
+    });
+  },
+
   update(id, video) {
     AppDispatcher.dispatch({
       actionType: AppConstants.VIDEO_UPDATE,
