@@ -12,13 +12,11 @@ function getVideoState() {
 
 const VideoItem = React.createClass({
 
-  countViews(e) {
-    e.preventDefault();
+  countViews() {
     AppActions.incrementView(this.props.video.id);
   },
 
-  countVotes(e){
-    e.preventDefault();
+  countVotes(){
     AppActions.incrementVotes(this.props.video.id);
   },
 
@@ -28,9 +26,12 @@ const VideoItem = React.createClass({
     return (
       <li>
         <div>
-          <section className="votes" onClick={this.countVotes}>V {video.votes}</section>
+          <section className="votes" onClick={this.countVotes}>
+            <img src="scripts/images/votes_up_arrow.png"/>
+            {video.votes}
+          </section>
           <img src="" alt=""/>
-          <a href={video.url} onClick={this.countViews}>{video.title}</a>
+          <a href={video.url} onClick={this.countViews} target="_blank">{video.title}</a>
 
           <div className="videoInfo">
             <p>{video.name}</p>
@@ -67,7 +68,7 @@ const VideosList = React.createClass({
         <div className="videosListHeader">
           <h4>Latest Videos</h4>
 
-          <div className="sorting">Sort by
+          <div className="sorting">Sort by:
             <select name="sortBy">
               <option value="mRecent">Most recent</option>
               <option value="mPopular">Most popular this month</option>

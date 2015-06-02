@@ -11,13 +11,13 @@ let videos = {
     url: "https://youtu.be/nPER_vv2SyU",
     name: "David",
     email: "hello@hello.com",
-    views: 0,
-    votes: 0
+    views: 3,
+    votes: 3
   },
 
-  [_id]: {
-    id: _id,
-    time: new Date,
+  [34]: {
+    id: 34,
+    time: "Tue Jun 02 2015 14:36:28 GMT+1000 (AEST)",
     title: "Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon",
     url: "https://youtu.be/kIeCdrSED4g",
     name: "Samantha",
