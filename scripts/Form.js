@@ -54,7 +54,6 @@ const Form = React.createClass({
               id={this.props.id}
               //onBlur={this._save}
               onChange={this._onChange}
-              //value={this.state.title}
               autoFocus={true}
               required
               />

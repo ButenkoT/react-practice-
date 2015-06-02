@@ -8,7 +8,7 @@ let videos = {
     id: _id,
     time: new Date,
     title: "Funny cats",
-    url: "https://youtu.be/nPER_vv2SyU",
+    url: "https://www.youtube.com/watch?v=i__969noyAM",
     name: "David",
     email: "hello@hello.com",
     views: 3,

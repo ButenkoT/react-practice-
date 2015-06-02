@@ -1,9 +1,9 @@
-import React from 'react';
-import Header from './Header';
-import Content from './Content';
-import Footer from './Footer';
+const React = require('react');
+const Header = require('./Header');
+const Content = require('./Content');
+const Footer = require('./Footer');
 
-export default class App extends React.Component {
+const App = React.createClass({
   render() {
     return (
       <div>
@@ -13,4 +13,6 @@ export default class App extends React.Component {
       </div>
     );
   }
-}
+});
+
+export default App;

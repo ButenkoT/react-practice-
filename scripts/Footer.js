@@ -1,10 +1,6 @@
-/**
- * Created by tetianabutenko on 28/05/2015.
- */
+const React = require('react');
 
-import React from 'react';
-
-export default class Footer extends React.Component {
+const Footer = React.createClass({
   render() {
     return (
       <footer>
@@ -12,4 +8,6 @@ export default class Footer extends React.Component {
       </footer>
     );
   }
-}
+});
+
+export default Footer;
