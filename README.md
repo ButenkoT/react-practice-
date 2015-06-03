@@ -1,4 +1,6 @@
-# react-boilerplate
+# 15 minute video competition
 
-Boilerplate for ReactJS with hot code reloading, webpack, babel and karma
+A web application that allows visitors to participate in an internet-wide video competition.
+
+
 
