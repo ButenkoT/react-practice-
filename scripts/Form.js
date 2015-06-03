@@ -32,17 +32,16 @@ const Form = React.createClass({
       isValid = false;
     } else {
       this.setState({titleError: false})
-      isValid = true;
     }
 
     let urlObject = url.parse(video.url);
-
-    if (urlObject.pathname !== "www.youtube.com" || urlObject.pathname !== "youtu.be"){
+    console.log(urlObject);
+    console.log(urlObject.hostname);
+    if (!(urlObject.hostname === "www.youtube.com" || urlObject.hostname === "youtu.be")){
       this.setState({urlError: 'Only YouTube videos are allowed'});
       isValid = false;
     } else {
       this.setState({urlError: false})
-      isValid = true;
     }
 
     if (!/[\w]{10,200}/.test(video.url)) {
@@ -50,7 +49,6 @@ const Form = React.createClass({
       isValid = false;
     } else {
       this.setState({urlError: false})
-      isValid = true;
     }
 
     if (!/[\w\s]{0,50}/.test(video.name)) {
@@ -58,7 +56,6 @@ const Form = React.createClass({
       isValid = false;
     } else {
       this.setState({nameError: false})
-      isValid = true;
     }
 
     if (video.email && !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(video.email)) {
@@ -66,7 +63,6 @@ const Form = React.createClass({
       isValid = false;
     } else {
       this.setState({emailError: false})
-      isValid = true;
     }
 
     return isValid;
@@ -107,7 +103,7 @@ const Form = React.createClass({
               autoFocus={true}
               required/>
             <br/>
-            {this.state.titleError ? <span>{this.state.titleError}</span> : null}
+            {this.state.titleError ? <span className="error">{this.state.titleError}</span> : null}
           </div>
 
           <div>YouTube URL
@@ -116,7 +112,7 @@ const Form = React.createClass({
               type="text"
               required/>
             <br/>
-            {this.state.urlError ? <span>{this.state.urlError}</span> : null}
+            {this.state.urlError ? <span className="error">{this.state.urlError}</span> : null}
           </div>
 
           <div>Your name
@@ -126,7 +122,7 @@ const Form = React.createClass({
               placeholder="anonymous"
               defaultValue="anonymous"/>
             <br/>
-            {this.state.nameError ? <span>{this.state.nameError}</span> : null}
+            {this.state.nameError ? <span className="error">{this.state.nameError}</span> : null}
           </div>
 
           <div>Your email address
@@ -135,7 +131,7 @@ const Form = React.createClass({
               type="text"
               placeholder="(optional)"/>
             <br/>
-            {this.state.emailError ? <span>{this.state.emailError}</span> : null}
+            {this.state.emailError ? <span className="error">{this.state.emailError}</span> : null}
           </div>
 
           <button type="submit">Submit entry</button>

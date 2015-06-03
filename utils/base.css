@@ -27,7 +27,7 @@ header {
     background-color: rgba(95, 58, 33, 1);
     padding: 1rem;
     height: 4rem;
-    color: #fff;
+    color: rgba(255, 255, 255, 1);
     text-align: center;
 }
 
@@ -52,7 +52,7 @@ form div{
 }
 
 form{
-    border-bottom: 1px solid black;
+    border-bottom: 0.06rem solid rgba(0,0,0,1);
 }
 
 form, ol, .videosListHeader{
@@ -65,6 +65,10 @@ form input{
     width: 25rem;
     height: 2rem;
     display: block;
+}
+
+.error{
+    color: rgba(255, 0, 0, 1);
 }
 
 button{
@@ -89,8 +93,10 @@ button:hover{
 }
 
 .votes{
+    width: 2.3rem;
     text-align: center;
     padding-top: 0.2rem;
+    box-sizing: border-box;
 }
 
 .videosList h4{
@@ -106,13 +112,17 @@ button:hover{
     height: 2.4rem;
 }
 
-.votes p:first-child{
-    font-weight: bold;
-    color: red;
+.votes p:last-child, .videoInfo{
+    font-size: 0.6rem;
+}
+
+.videoInfo{
+    vertical-align: bottom;
 }
 
 .coverImage{
     margin: 0 0.3rem;
+    box-sizing: border-box;
 }
 
 .videoDescription{
@@ -131,10 +141,10 @@ button:hover{
 }
 
 .videoDescription a:hover{
-    /*height: 3.5rem;*/
     overflow: visible;
     width: 26rem;
     white-space: normal;
+    text-shadow: 0.08rem 0.08rem 0.08rem rgba(255, 255, 255, 1);
 }
 
 footer {

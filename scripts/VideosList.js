@@ -53,7 +53,7 @@ const VideoItem = React.createClass({
             <p>votes</p>
           </section>
 
-          <img className="coverImage" src={cover} alt="youtube video cover"/>
+          <img className="coverImage" src={cover} alt="video cover"/>
 
           <section className="videoDescription">
             <a href={video.url} onClick={this.countViews} target="_blank">{video.title}</a>
