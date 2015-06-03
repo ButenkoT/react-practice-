@@ -6,7 +6,7 @@ const AppActions = require('./actions/AppActions');
 const Content = React.createClass({
   render() {
     return (
-      <section>
+      <section className="mainContent">
         <Form onSave={this._onSave}/>
         <VideosList />
       </section>

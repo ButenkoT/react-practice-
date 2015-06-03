@@ -13,7 +13,6 @@ function getVideoState() {
   };
 }
 
-
 function videoImage(videoUrl) {
   let id;
   let urlObject = url.parse(videoUrl);
@@ -44,19 +43,27 @@ const VideoItem = React.createClass({
     const cover = videoImage(video.url);
     return (
       <li>
-        <div>
-          <section className="votes" onClick={this.countVotes}>
-            <img src="scripts/images/votes_up_arrow.png"/>
-            {video.votes}
+        <div className="competitionVideo">
+
+          <section className="votes" >
+            <img src="scripts/images/votes_up_arrow.png" alt="voting arrow" onClick={this.countVotes}/>
+
+            <p>{video.votes}</p>
+
+            <p>votes</p>
           </section>
-          <img src={cover} alt=""/>
-          <a href={video.url} onClick={this.countViews} target="_blank">{video.title}</a>
 
-          <div className="videoInfo">
-            <p>{video.name}</p>
+          <img className="coverImage" src={cover} alt="youtube video cover"/>
 
-            <p>{timeVideoAdded} * {video.views} views</p>
-          </div>
+          <section className="videoDescription">
+            <a href={video.url} onClick={this.countViews} target="_blank">{video.title}</a>
+
+            <div className="videoInfo">
+              <p>{video.name}</p>
+
+              <p>{timeVideoAdded} * {video.views} views</p>
+            </div>
+          </section>
         </div>
       </li>
     );

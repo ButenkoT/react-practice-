@@ -31,14 +31,14 @@ header {
     text-align: center;
 }
 
-section{
+.mainContent{
     max-width: 60rem;
     padding: 0.8rem;
     margin: 0 auto;
 }
 
 .submitForm, .videosList{
-    max-width: 50rem;
+    max-width: 55rem;
     margin: 0 auto;
 }
 
@@ -71,12 +71,26 @@ button{
    height: 2rem;
 }
 
-select{
-    margin-left: 0.5rem;
+button:hover{
+    box-shadow: 0.3rem 0.3rem 1rem rgba(142, 85, 47, 1);
 }
 
-.votes, img, .videoInfo, .sorting, .videosList h4{
+.competitionVideo{
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+}
+
+.votes, img, .videoDescription, .videoInfo, .sorting, .videosList h4{
     display: inline-block;
+}
+
+.votes, .coverImage, .videoDescription{
+    vertical-align: top;
+}
+
+.votes{
+    text-align: center;
+    padding-top: 0.2rem;
 }
 
 .videosList h4{
@@ -84,7 +98,43 @@ select{
 }
 
 .votes img{
-    height: 3rem;
+    height: 2.3rem;
+    margin-bottom: 0.1rem;
+}
+
+.votes img:hover{
+    height: 2.4rem;
+}
+
+.votes p:first-child{
+    font-weight: bold;
+    color: red;
+}
+
+.coverImage{
+    margin: 0 0.3rem;
+}
+
+.videoDescription{
+    width: 18rem;
+    padding-left: 1rem;
+}
+
+.videoDescription a{
+    display: block;
+    height: 3.5rem;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.videoDescription a:hover{
+    /*height: 3.5rem;*/
+    overflow: visible;
+    width: 26rem;
+    white-space: normal;
 }
 
 footer {

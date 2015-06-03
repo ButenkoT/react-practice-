@@ -7,7 +7,7 @@ let videos = {
   [_id]: {
     id: _id,
     time: new Date,
-    title: "Funny cats",
+    title: "Flux and React",
     url: "https://www.youtube.com/watch?v=i__969noyAM",
     name: "David",
     email: "hello@hello.com",
@@ -18,7 +18,7 @@ let videos = {
   [34]: {
     id: 34,
     time: "Tue Jun 02 2015 14:36:28 GMT+1000 (AEST)",
-    title: "Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon Funny racoon",
+    title: "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in",
     url: "https://youtu.be/kIeCdrSED4g",
     name: "Samantha",
     email: "hello@me.com",
