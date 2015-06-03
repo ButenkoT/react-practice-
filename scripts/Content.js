@@ -7,13 +7,13 @@ const Content = React.createClass({
   render() {
     return (
       <section className="mainContent">
-        <Form onSave={this._onSave}/>
+        <Form onSubmit={this.onSubmit}/>
         <VideosList />
       </section>
     );
   },
 
-  _onSave: function(video) {
+  onSubmit: function(video) {
     if (video.trim()) {
       AppActions.create(video);
     }

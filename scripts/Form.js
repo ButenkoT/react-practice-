@@ -7,7 +7,8 @@ const Form = React.createClass({
 
   propTypes: {
     id: ReactPropTypes.string,
-    placeholder: ReactPropTypes.string
+    placeholder: ReactPropTypes.string,
+    onSubmit: ReactPropTypes.func.isRequired
   },
 
   getInitialState: function () {
@@ -26,6 +27,7 @@ const Form = React.createClass({
   isValid(video) {
 
     let isValid = true;
+    let urlObject = url.parse(video.url);
 
     if (!/[\w\s]{3,100}/.test(video.title)) {
       this.setState({titleError: 'Title should be between 3 and 100 symbols'});
@@ -34,9 +36,6 @@ const Form = React.createClass({
       this.setState({titleError: false})
     }
 
-    let urlObject = url.parse(video.url);
-    console.log(urlObject);
-    console.log(urlObject.hostname);
     if (!(urlObject.hostname === "www.youtube.com" || urlObject.hostname === "youtu.be")){
       this.setState({urlError: 'Only YouTube videos are allowed'});
       isValid = false;
@@ -44,7 +43,7 @@ const Form = React.createClass({
       this.setState({urlError: false})
     }
 
-    if (!/[\w]{10,200}/.test(video.url)) {
+    if (!/[\w]{0,200}/.test(video.url)) {
       this.setState({urlError: "Invalid URL"});
       isValid = false;
     } else {
@@ -84,6 +83,7 @@ const Form = React.createClass({
         video.name = "anonymous";
       }
       AppActions.create(video);
+      //AppActions.cleanData(video);
     }
   },
 
