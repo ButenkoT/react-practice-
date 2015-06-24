@@ -2,6 +2,7 @@ const _ = require('lodash');
 const React = require('react');
 const VideoService = require('./VideoService');
 const VideoItem = require('./VideoItem');
+const SortVideos = require('./SortVideos');
 
 function getVideoState() {
   return {
@@ -33,13 +34,10 @@ const VideosList = React.createClass({
         <div className="videosListHeader">
           <h4>Latest Videos</h4>
 
-          <div className="sorting">Sort by:
-            <select name="sortBy">
-              <option value="mRecent">Most recent</option>
-              <option value="mPopular">Most popular this month</option>
-            </select>
-          </div>
+          <SortVideos />
+
         </div>
+
         <ol>{Videos}</ol>
 
       </div>
