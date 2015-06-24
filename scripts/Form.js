@@ -28,6 +28,8 @@ const Form = React.createClass({
 
     let isValid = true;
     let urlObject = url.parse(video.url);
+    let g = url.parse("http://gdata.youtube.com/feeds/api/videos/PPN3KTtrnZM");
+    console.log(g);
 
     if (!/[\w\s]{3,100}/.test(video.title)) {
       this.setState({titleError: 'Title should be between 3 and 100 symbols'});

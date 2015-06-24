@@ -7,6 +7,16 @@ body {
     background-color: rgba(231, 225, 205, 1);
 }
 
+@media (max-width: 480px) {
+    .submitForm, .videosList{
+        max-width: 27rem;
+    }
+
+    form{
+        max-width: 20rem;
+    }
+}
+
 h1 {
     font-size: 2rem;
 }
