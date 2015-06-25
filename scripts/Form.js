@@ -11,6 +11,7 @@ const Form = React.createClass({
     onSubmit: ReactPropTypes.func.isRequired
   },
 
+  //TODO: http://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html
   getInitialState: function () {
     return {
       title: this.props.title || '',
@@ -85,8 +86,15 @@ const Form = React.createClass({
         video.name = "anonymous";
       }
       AppActions.create(video);
-      //AppActions.cleanData(video);
+
+      //cleaning data from the form after submit
+      React.findDOMNode(this.refs.title).value = '';
+      React.findDOMNode(this.refs.url).value = '';
+      React.findDOMNode(this.refs.name).value = 'anonymous';
+      React.findDOMNode(this.refs.email).value = '';
+
     }
+
   },
 
   render() {
@@ -94,7 +102,7 @@ const Form = React.createClass({
       <div className="submitForm">
         <h4>Submit your 15 minute video entry</h4>
 
-        <form action="" onSubmit={this.onSubmit} validate>
+        <form onSubmit={this.onSubmit} validate>
 
           <div>
             <input
@@ -136,7 +144,7 @@ const Form = React.createClass({
             {this.state.emailError ? <span className="error">{this.state.emailError}</span> : null}
           </div>
 
-          <button type="submit">Submit entry</button>
+          <button type="submit" value="Post">Submit entry</button>
 
         </form>
       </div>
