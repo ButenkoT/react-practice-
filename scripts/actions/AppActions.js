@@ -42,6 +42,13 @@ const AppActions = {
         email: video.email
       }
     });
+  },
+
+  changeSort(sort){
+    AppDispatcher.dispatch({
+      actionType: AppConstants.SORT_VALUE,
+      sort: sort
+    });
   }
 
 };

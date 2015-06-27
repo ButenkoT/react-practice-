@@ -27,6 +27,8 @@ let videos = JSON.parse(localStorage.getItem('VideoStore')) || {
     }
   };
 
+let sort = 'mostRecent';
+
 function update(id, updates) {
   videos[id] = Object.assign({}, videos[id], updates);
   localStorage.setItem('VideoStore', JSON.stringify(videos));
@@ -55,11 +57,15 @@ function incrementVotes(id) {
   update(id, {votes: videos[id].votes + 1})
 }
 
-const VideoStore = Object.assign({}, EventEmitter.prototype, {
+function sortByPopularity(){
+  return videos;
+}
 
-  getAll () {
-    return videos;
-  },
+function sortByDate(){
+  return videos;
+}
+
+const VideoStore = Object.assign({}, EventEmitter.prototype, {
 
   addChangeListener (callback) {
     this.on('change', callback);
@@ -67,6 +73,20 @@ const VideoStore = Object.assign({}, EventEmitter.prototype, {
 
   removeChangeListener (callback) {
     this.removeListener('change', callback);
+  },
+
+  getSortedVideos () {
+    if (sort === 'mostPopular'){
+      return sortByPopularity();
+    } else if (sort === 'mostRecent'){
+      return sortByDate();
+    } else {
+      return videos;
+    }
+  },
+
+  getSort () {
+    return sort;
   }
 
 });
@@ -99,6 +119,11 @@ AppDispatcher.register(function (action) {
         update(action.id, {video: video});
         VideoStore.emit('change');
       }
+      break;
+
+    case AppConstants.SORT_VALUE:
+      sort = action.sort;
+      VideoStore.emit('change');
       break;
 
     default:

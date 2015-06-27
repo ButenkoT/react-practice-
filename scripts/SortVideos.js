@@ -1,29 +1,49 @@
 const React = require('react');
+const VideoStore = require('./VideoStore');
+const AppActions = require('./actions/AppActions');
 
+function getSelectState() {
+  return {
+    sortOption: VideoStore.getSort()
+  };
+}
 
 const SortVideos = React.createClass({
 
   getInitialState () {
-    return {selectValue: 'mRecent'};
+    return getSelectState();
+  },
+
+  componentDidMount: function () {
+    VideoStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function () {
+    VideoStore.removeChangeListener(this._onChange);
   },
 
   handleChange (e) {
-    this.setState({selectValue: e.target.value});
+    AppActions.changeSort(e.target.value)
   },
 
   render() {
 
-    console.log('You selected ' + this.state.selectValue);
+    console.log('You selected ' + this.state.sortOption);
 
     return (
       <div className="sorting">Sort by:
-        <select name="sortBy" value={this.state.selectValue}
+        <select name="sortBy" value={this.state.sortOption}
                 onChange={this.handleChange}>
-          <option value="mRecent">Most recent</option>
-          <option value="mPopular">Most popular this month</option>
+          <option></option>
+          <option value="mostRecent">Most recent</option>
+          <option value="mostPopular">Most popular this month</option>
         </select>
       </div>
     );
+  },
+
+  _onChange () {
+    this.setState(getSelectState());
   }
 
 });

@@ -6,7 +6,7 @@ const SortVideos = require('./SortVideos');
 
 function getVideoState() {
   return {
-    allVideo: VideoStore.getAll()
+    allVideo: VideoStore.getSortedVideos()
   };
 }
 
@@ -18,7 +18,6 @@ const VideosList = React.createClass({
 
   componentDidMount: function () {
     VideoStore.addChangeListener(this._onChange);
-    //TODO: add listener for SortVideos.handleChange(mPopular)?
   },
 
   componentWillUnmount: function () {
@@ -26,8 +25,6 @@ const VideosList = React.createClass({
   },
 
   render(){
-
-    //TODO: if selected most popular SortVideos.state.selectValue == "mPopular" => video.views highest
 
     let Videos = _.map(this.state.allVideo, (video, id) =>
       <VideoItem key={id} video={video}/>);
