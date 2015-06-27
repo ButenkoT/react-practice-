@@ -33,8 +33,9 @@ const VideoItem = React.createClass({
 
   render() {
     const {video} = this.props;
-    const timeVideoAdded = moment().startOf(video.time).fromNow();
+    const timeVideoAdded = moment(video.time).fromNow();
     const cover = videoImage(video.url);
+
     return (
       <li>
         <div className="competitionVideo">
