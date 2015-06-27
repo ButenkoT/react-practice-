@@ -58,11 +58,11 @@ function incrementVotes(id) {
 }
 
 function sortByPopularity(){
-  return videos;
+  return _.sortByOrder(videos, ['views'], [false]);
 }
 
 function sortByDate(){
-  return videos;
+  return _.values(videos);
 }
 
 const VideoStore = Object.assign({}, EventEmitter.prototype, {
@@ -81,7 +81,7 @@ const VideoStore = Object.assign({}, EventEmitter.prototype, {
     } else if (sort === 'mostRecent'){
       return sortByDate();
     } else {
-      return videos;
+      return _.values(videos);
     }
   },
 

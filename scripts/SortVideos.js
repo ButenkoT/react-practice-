@@ -28,8 +28,6 @@ const SortVideos = React.createClass({
 
   render() {
 
-    console.log('You selected ' + this.state.sortOption);
-
     return (
       <div className="sorting">Sort by:
         <select name="sortBy" value={this.state.sortOption}
