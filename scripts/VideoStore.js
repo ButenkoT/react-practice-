@@ -17,7 +17,7 @@ let videos = JSON.parse(localStorage.getItem('VideoStore')) || {
 
     [34]: {
       id: 34,
-      time: "Tue Jun 02 2015 14:36:28 GMT+1000 (AEST)",
+      time: new Date,
       title: "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in",
       url: "https://youtu.be/kIeCdrSED4g",
       name: "Samantha",
@@ -62,7 +62,7 @@ function sortByPopularity(){
 }
 
 function sortByDate(){
-  return _.values(videos);
+  return _.sortByOrder(videos, ['time'], [false]);
 }
 
 const VideoStore = Object.assign({}, EventEmitter.prototype, {
