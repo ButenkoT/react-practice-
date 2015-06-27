@@ -3,17 +3,17 @@ const React = require('react');
 
 const SortVideos = React.createClass({
 
-  getInitialState:function(){
-    return {selectValue:'mRecent'};
+  getInitialState () {
+    return {selectValue: 'mRecent'};
   },
 
-  handleChange:function(e){
-    this.setState({selectValue:e.target.value});
+  handleChange (e) {
+    this.setState({selectValue: e.target.value});
   },
 
-  render(){
+  render() {
 
-    console.log('You selected '+this.state.selectValue);
+    console.log('You selected ' + this.state.selectValue);
 
     return (
       <div className="sorting">Sort by:

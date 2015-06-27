@@ -5,6 +5,7 @@ const Header = React.createClass({
     return (
       <header>
         <h1>15 Minutes Video Competition</h1>
+        <h1>hello there</h1>
       </header>
     );
   }

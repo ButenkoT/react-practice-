@@ -2,10 +2,10 @@ const EventEmitter = require('events').EventEmitter;
 const AppDispatcher = require('./dispatcher/AppDispatcher');
 const AppConstants = require('./constants/AppConstants');
 
-const _id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-let videos = {
-  [_id]: {
-    id: _id,
+
+let videos = JSON.parse(localStorage.getItem('VideoStore')) || {
+    [20]: {
+    id: 20,
     time: new Date,
     title: "Flux and React",
     url: "https://www.youtube.com/watch?v=i__969noyAM",
@@ -15,20 +15,21 @@ let videos = {
     votes: 3
   },
 
-  [34]: {
-    id: 34,
-    time: "Tue Jun 02 2015 14:36:28 GMT+1000 (AEST)",
-    title: "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in",
-    url: "https://youtu.be/kIeCdrSED4g",
-    name: "Samantha",
-    email: "hello@me.com",
-    views: 0,
-    votes: 0
-  }
-};
+    [34]: {
+      id: 34,
+      time: "Tue Jun 02 2015 14:36:28 GMT+1000 (AEST)",
+      title: "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed in",
+      url: "https://youtu.be/kIeCdrSED4g",
+      name: "Samantha",
+      email: "hello@me.com",
+      views: 0,
+      votes: 0
+    }
+  };
 
 function update(id, updates) {
   videos[id] = Object.assign({}, videos[id], updates);
+  localStorage.setItem('VideoStore', JSON.stringify(videos));
 }
 
 function create(video) {
@@ -43,27 +44,28 @@ function create(video) {
     views: 0,
     votes: 0
   };
+  localStorage.setItem('VideoStore', JSON.stringify(videos));
 }
 
 function incrementView(id) {
   update(id, {views: videos[id].views + 1})
 }
 
-function incrementVotes(id){
+function incrementVotes(id) {
   update(id, {votes: videos[id].votes + 1})
 }
 
 const VideoStore = Object.assign({}, EventEmitter.prototype, {
 
-  getAll: function () {
+  getAll () {
     return videos;
   },
 
-  addChangeListener: function (callback) {
+  addChangeListener (callback) {
     this.on('change', callback);
   },
 
-  removeChangeListener: function (callback) {
+  removeChangeListener (callback) {
     this.removeListener('change', callback);
   }
 

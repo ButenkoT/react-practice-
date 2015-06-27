@@ -1,12 +1,12 @@
 const _ = require('lodash');
 const React = require('react');
-const VideoService = require('./VideoService');
+const VideoStore = require('./VideoStore');
 const VideoItem = require('./VideoItem');
 const SortVideos = require('./SortVideos');
 
 function getVideoState() {
   return {
-    allVideo: VideoService.getAll()
+    allVideo: VideoStore.getAll()
   };
 }
 
@@ -17,14 +17,17 @@ const VideosList = React.createClass({
   },
 
   componentDidMount: function () {
-    VideoService.addChangeListener(this._onChange);
+    VideoStore.addChangeListener(this._onChange);
+    //TODO: add listener for SortVideos.handleChange(mPopular)?
   },
 
   componentWillUnmount: function () {
-    VideoService.removeChangeListener(this._onChange);
+    VideoStore.removeChangeListener(this._onChange);
   },
 
   render(){
+
+    //TODO: if selected most popular SortVideos.state.selectValue == "mPopular" => video.views highest
 
     let Videos = _.map(this.state.allVideo, (video, id) =>
       <VideoItem key={id} video={video}/>);

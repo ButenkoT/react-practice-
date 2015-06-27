@@ -18,7 +18,7 @@ const Form = React.createClass({
       titleError: false,
       url: this.props.url || '',
       urlError: false,
-      name: this.props.name || 'anonymous',
+      name: this.props.name || '',
       nameError: false,
       email: this.props.email || '',
       emailError: false
@@ -90,7 +90,7 @@ const Form = React.createClass({
       //cleaning data from the form after submit
       React.findDOMNode(this.refs.title).value = '';
       React.findDOMNode(this.refs.url).value = '';
-      React.findDOMNode(this.refs.name).value = 'anonymous';
+      React.findDOMNode(this.refs.name).value = '';
       React.findDOMNode(this.refs.email).value = '';
 
     }
@@ -129,8 +129,7 @@ const Form = React.createClass({
             <input
               ref="name"
               type="text"
-              placeholder="anonymous"
-              defaultValue="anonymous"/>
+              placeholder="anonymous"/>
             <br/>
             {this.state.nameError ? <span className="error">{this.state.nameError}</span> : null}
           </div>
