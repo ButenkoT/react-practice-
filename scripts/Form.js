@@ -1,101 +1,50 @@
-const React = require('react');
-const url = require('url');
-const ReactPropTypes = React.PropTypes;
-const AppActions = require('./actions/AppActions');
+import React from 'react';
+import AppActions from './actions/AppActions';
+import Email from './formElements/Email';
+import Title from './formElements/Title';
+import Name from './formElements/Name';
+import Url from './formElements/Url';
+
 
 const Form = React.createClass({
 
   propTypes: {
-    id: ReactPropTypes.string,
-    placeholder: ReactPropTypes.string,
-    onSubmit: ReactPropTypes.func.isRequired
+    onSubmit: React.PropTypes.func.isRequired
   },
 
-  //TODO: http://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html
-  getInitialState: function () {
+  getInitialState() {
     return {
-      title: this.props.title || '',
-      titleError: false,
-      url: this.props.url || '',
-      urlError: false,
-      name: this.props.name || '',
-      nameError: false,
-      email: this.props.email || '',
-      emailError: false
+      title: '',
+      titleValid: false,
+      url: '',
+      urlValid: false,
+      name: 'anonymous',
+      nameValid: false,
+      email: '',
+      emailValid: false
     };
   },
 
-  isValid(video) {
+  onSubmit() {
+    if (this.state.titleValid && this.state.nameValid && this.state.urlValid && this.state.emailValid) {
+      AppActions.create({
+        title: this.state.title,
+        url: this.state.url,
+        name: this.state.name,
+        email: this.state.email
+      });
 
-    let isValid = true;
-    let urlObject = url.parse(video.url);
-    let g = url.parse("http://gdata.youtube.com/feeds/api/videos/PPN3KTtrnZM");
-    console.log(g);
-
-    if (!/[\w\s]{3,100}/.test(video.title)) {
-      this.setState({titleError: 'Title should be between 3 and 100 symbols'});
-      isValid = false;
+      this.setState({title: '', url: '', name: '', email: ''});
     } else {
-      this.setState({titleError: false})
+      console.log('NOPE!');
     }
-
-    if (!(urlObject.hostname === "www.youtube.com" || urlObject.hostname === "youtu.be")){
-      this.setState({urlError: 'Only YouTube videos are allowed'});
-      isValid = false;
-    } else {
-      this.setState({urlError: false})
-    }
-
-    if (!/[\w]{0,200}/.test(video.url)) {
-      this.setState({urlError: "Invalid URL"});
-      isValid = false;
-    } else {
-      this.setState({urlError: false})
-    }
-
-    if (!/[\w\s]{0,50}/.test(video.name)) {
-      this.setState({nameError: 'Name should be not longer then 50 symbols'});
-      isValid = false;
-    } else {
-      this.setState({nameError: false})
-    }
-
-    if (video.email && !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(video.email)) {
-      this.setState({emailError: 'Invalid email'});
-      isValid = false;
-    } else {
-      this.setState({emailError: false})
-    }
-
-    return isValid;
   },
 
-  onSubmit(e) {
-    e.preventDefault();
-
-    let video = {};
-
-    for (let key in this.refs) {
-      if (this.refs.hasOwnProperty(key)) {
-        video[key] = this.refs[key].getDOMNode().value;
-      }
-    }
-
-    if (this.isValid(video)) {
-      if (video.name === ""){
-        video.name = "anonymous";
-      }
-      AppActions.create(video);
-
-      //cleaning data from the form after submit
-      React.findDOMNode(this.refs.title).value = '';
-      React.findDOMNode(this.refs.url).value = '';
-      React.findDOMNode(this.refs.name).value = '';
-      React.findDOMNode(this.refs.email).value = '';
-
-    }
-
-  },
+  //  for (let key in this.refs) {
+  //    if (this.refs.hasOwnProperty(key)) {
+  //      video[key] = this.refs[key].getDOMNode().value;
+  //    }
+  //  }
 
   render() {
     return (
@@ -104,44 +53,23 @@ const Form = React.createClass({
 
         <form onSubmit={this.onSubmit} validate>
 
-          <div>
-            <input
-              type="text"
-              ref="title"
-              placeholder="Insert video title"
-              id={this.props.id}
-              autoFocus={true}
-              required/>
-            <br/>
-            {this.state.titleError ? <span className="error">{this.state.titleError}</span> : null}
-          </div>
+          <Title title={this.state.title}
+                 onChange={title => this.setState({title})}
+                 isValid={titleValid => this.setState({titleValid})}></Title>
 
-          <div>YouTube URL
-            <input
-              ref="url"
-              type="text"
-              required/>
-            <br/>
-            {this.state.urlError ? <span className="error">{this.state.urlError}</span> : null}
-          </div>
+          <Url url={this.state.url}
+                 onChange={url => this.setState({url})}
+                 isValid={urlValid => this.setState({urlValid})}></Url>
 
-          <div>Your name
-            <input
-              ref="name"
-              type="text"
-              placeholder="anonymous"/>
-            <br/>
-            {this.state.nameError ? <span className="error">{this.state.nameError}</span> : null}
-          </div>
 
-          <div>Your email address
-            <input
-              ref="email"
-              type="text"
-              placeholder="(optional)"/>
-            <br/>
-            {this.state.emailError ? <span className="error">{this.state.emailError}</span> : null}
-          </div>
+          <Name name={this.state.name}
+                 onChange={name => this.setState({name})}
+                 isValid={nameValid => this.setState({nameValid})}></Name>
+
+
+          <Email email={this.state.email}
+                 onChange={email => this.setState({email})}
+                 isValid={emailValid => this.setState({emailValid})}></Email>
 
           <button type="submit" value="Post">Submit entry</button>
 
