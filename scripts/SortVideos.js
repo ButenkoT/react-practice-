@@ -1,6 +1,6 @@
-const React = require('react');
-const VideoStore = require('./VideoStore');
-const AppActions = require('./actions/AppActions');
+import React from 'react';
+import VideoStore from './VideoStore';
+import AppActions from './actions/AppActions';
 
 function getSelectState() {
   return {

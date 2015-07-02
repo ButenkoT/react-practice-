@@ -1,8 +1,8 @@
-const _ = require('lodash');
-const React = require('react');
-const VideoStore = require('./VideoStore');
-const VideoItem = require('./VideoItem');
-const SortVideos = require('./SortVideos');
+import _ from 'lodash';
+import React from 'react';
+import VideoStore from './VideoStore';
+import VideoItem from './VideoItem';
+import SortVideos from './SortVideos';
 
 function getVideoState() {
   return {

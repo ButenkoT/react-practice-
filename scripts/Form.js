@@ -40,12 +40,6 @@ const Form = React.createClass({
     }
   },
 
-  //  for (let key in this.refs) {
-  //    if (this.refs.hasOwnProperty(key)) {
-  //      video[key] = this.refs[key].getDOMNode().value;
-  //    }
-  //  }
-
   render() {
     return (
       <div className="submitForm">

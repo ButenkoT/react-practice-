@@ -1,8 +1,7 @@
-require('babel-core/polyfill');
-
-const React = require('react');
-const App = require('./App');
-require('../utils/reset.css');
-require('../utils/base.css');
+import 'babel-core/polyfill';
+import '../utils/reset.css';
+import '../utils/base.css';
+import React from 'react';
+import App from './App';
 
 React.render(<App />, document.getElementById('root'));

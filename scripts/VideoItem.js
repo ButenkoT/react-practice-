@@ -1,10 +1,9 @@
-const _ = require('lodash');
-const moment = require('moment');
-const url = require('url');
-const path = require('path');
-const querystring = require('querystring');
-const React = require('react');
-const AppActions = require('./actions/AppActions');
+import moment from 'moment';
+import url from 'url';
+import path from 'path';
+import querystring from 'querystring';
+import React from 'react';
+import AppActions from './actions/AppActions';
 
 
 function videoImage(videoUrl) {

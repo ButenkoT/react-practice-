@@ -1,7 +1,7 @@
-const React = require('react');
-const Form = require('./Form');
-const VideosList = require('./VideosList');
-const AppActions = require('./actions/AppActions');
+import React from 'react';
+import Form from './Form';
+import VideosList from './VideosList';
+import AppActions from './actions/AppActions';
 
 const Content = React.createClass({
   render() {
