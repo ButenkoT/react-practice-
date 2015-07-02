@@ -92,9 +92,11 @@ const VideoStore = Object.assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function (action) {
+  const video = action.video;
+  const id = action.id;
   switch (action.actionType) {
+
     case AppConstants.VIDEO_CREATE:
-      const video = action.video;
       if (video) {
         create(video);
         VideoStore.emit('change');
@@ -102,19 +104,16 @@ AppDispatcher.register(function (action) {
       break;
 
     case AppConstants.VIDEO_INCREMENT_VIEW:
-      const id = action.id;
       incrementView(id);
       VideoStore.emit('change');
       break;
 
     case AppConstants.VIDEO_INCREMENT_VOTES:
-      const id = action.id;
       incrementVotes(id);
       VideoStore.emit('change');
       break;
 
     case AppConstants.VIDEO_UPDATE:
-      const video = action.video;
       if (video) {
         update(action.id, {video: video});
         VideoStore.emit('change');

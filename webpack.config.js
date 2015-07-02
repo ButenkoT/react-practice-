@@ -32,6 +32,10 @@ module.exports = {
         loader: 'style!css?sourceMap'
       },
       {
+        test: /\.less$/,
+        loader: "style!css?module!less?sourceMap"
+      },
+      {
         test: /\.json$/,
         loader: 'json'
       }

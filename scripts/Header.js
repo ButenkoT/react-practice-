@@ -1,9 +1,10 @@
-const React = require('react');
+import React from 'react';
+import styles from './Header.less';
 
 const Header = React.createClass({
   render() {
     return (
-      <header>
+      <header className = {styles.Header}>
         <h1>15 Minutes Video Competition</h1>
       </header>
     );
