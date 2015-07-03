@@ -1,38 +1,31 @@
 .Form {
-    max-width: 55rem;
-    margin: 0 auto;
+  max-width: 55rem;
+  margin: 0 auto;
 }
-
 .Form h4 {
-    text-align: center;
-    margin: 1rem;
+  text-align: center;
+  margin: 1rem;
 }
-
 form {
-    margin: 0 auto;
-    max-width: 30rem;
-    padding: 1rem 1rem;
-    border-bottom: 0.06rem solid #000000;
+  margin: 0 auto;
+  max-width: 30rem;
+  padding: 1rem 1rem;
+  border-bottom: 0.1rem solid #000000;
 }
-
 form div {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
-
 form input {
-    width: 25rem;
-    height: 2rem;
-    display: block;
+  width: 25rem;
+  height: 2rem;
+  display: block;
 }
-
 .error {
-    color: #ff0000;
+  color: #ff0000;
 }
-
 button {
-    height: 2rem;
+  height: 2rem;
 }
-
 button:hover {
-    box-shadow: 0.3rem 0.3rem 1rem #8e552f;
+  box-shadow: 0.3rem 0.3rem 1rem #8e552f;
 }

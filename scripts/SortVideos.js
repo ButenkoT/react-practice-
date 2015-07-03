@@ -1,6 +1,7 @@
 import React from 'react';
 import VideoStore from './VideoStore';
 import AppActions from './actions/AppActions';
+import styles from './VideoItem.less';
 
 function getSelectState() {
   return {
@@ -29,7 +30,7 @@ const SortVideos = React.createClass({
   render() {
 
     return (
-      <div className="sorting">Sort by:
+      <div className={styles.sorting}>Sort by:
         <select name="sortBy" value={this.state.sortOption}
                 onChange={this.handleChange}>
           <option></option>

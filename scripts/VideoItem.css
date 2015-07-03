@@ -1,0 +1,59 @@
+.competitionVideo {
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+}
+.votes,
+img,
+.videoDescription,
+.videoInfo,
+.sorting {
+  display: inline-block;
+}
+.votes,
+.coverImage,
+.videoDescription {
+  vertical-align: top;
+}
+.votes {
+  width: 2.3rem;
+  text-align: center;
+  padding-top: 0.2rem;
+  box-sizing: border-box;
+}
+.votes img {
+  height: 2.3rem;
+  margin-bottom: 0.1rem;
+}
+.votes img:hover {
+  height: 2.4rem;
+}
+.votes p:last-child,
+.videoInfo {
+  font-size: 0.6rem;
+}
+.videoInfo {
+  vertical-align: bottom;
+}
+.coverImage {
+  margin: 0 0.3rem;
+  box-sizing: border-box;
+}
+.videoDescription {
+  width: 18rem;
+  padding-left: 1rem;
+}
+.videoDescription a {
+  display: block;
+  height: 3.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  font-weight: bold;
+}
+.videoDescription a:hover {
+  overflow: visible;
+  width: 26rem;
+  white-space: normal;
+  text-shadow: 0.08rem 0.08rem 0.08rem #ffffff;
+}

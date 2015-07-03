@@ -3,6 +3,7 @@ import React from 'react';
 import VideoStore from './VideoStore';
 import VideoItem from './VideoItem';
 import SortVideos from './SortVideos';
+import styles from './VideosList.less';
 
 function getVideoState() {
   return {
@@ -30,8 +31,8 @@ const VideosList = React.createClass({
       <VideoItem key={id} video={video}/>);
 
     return (
-      <div className="videosList">
-        <div className="videosListHeader">
+      <div className={styles.videosList}>
+        <div className={styles.videosListHeader}>
           <h4>Latest Videos</h4>
 
           <SortVideos />

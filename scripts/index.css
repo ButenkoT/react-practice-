@@ -1,0 +1,29 @@
+body {
+  position: relative;
+  font-size: 16px;
+  font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  color: #2d7e84;
+  background-color: #e7e1cd;
+}
+@media (max-width: 480px) {
+  .submitForm,
+  .videosList {
+    max-width: 27rem;
+  }
+  form {
+    max-width: 20rem;
+  }
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.6rem;
+}
+h3 {
+  font-size: 1.3rem;
+}
+h4 {
+  font-size: 1.1rem;
+}

@@ -4,6 +4,7 @@ import path from 'path';
 import querystring from 'querystring';
 import React from 'react';
 import AppActions from './actions/AppActions';
+import styles from './VideoItem.less';
 
 
 function videoImage(videoUrl) {
@@ -37,9 +38,9 @@ const VideoItem = React.createClass({
 
     return (
       <li>
-        <div className="competitionVideo">
+        <div className={styles.competitionVideo}>
 
-          <section className="votes" >
+          <section className={styles.votes} >
             <img src="scripts/images/votes_up_arrow.png" alt="voting arrow" onClick={this.countVotes}/>
 
             <p>{video.votes}</p>
@@ -47,12 +48,12 @@ const VideoItem = React.createClass({
             <p>votes</p>
           </section>
 
-          <img className="coverImage" src={cover} alt="video cover"/>
+          <img className={styles.coverImage} src={cover} alt="video cover"/>
 
-          <section className="videoDescription">
+          <section className={styles.videoDescription}>
             <a href={video.url} onClick={this.countViews} target="_blank">{video.title}</a>
 
-            <div className="videoInfo">
+            <div className={styles.videoInfo}>
               <p>{video.name}</p>
 
               <p>{timeVideoAdded} * {video.views} views</p>
