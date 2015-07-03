@@ -1,4 +1,6 @@
 import React from 'react';
+import styles from '../Form.less';
+
 
 const isValid = title => /[\w\s]{3,100}/.test(title);
 
@@ -35,7 +37,7 @@ const Title = React.createClass({
   },
 
   render(){
-    return(
+    return (
       <div>
         <input
           value={this.props.title}
@@ -45,7 +47,7 @@ const Title = React.createClass({
           autoFocus={true}
           required/>
         <br/>
-        {this.state.titleError ? <span className="error">Title should be between 3 and 100 symbols</span> : null}
+        {this.state.titleError ? <span className={styles.error}>Title should be between 3 and 100 symbols</span> : null}
       </div>
     );
   }

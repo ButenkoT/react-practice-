@@ -4,6 +4,7 @@ import Email from './formElements/Email';
 import Title from './formElements/Title';
 import Name from './formElements/Name';
 import Url from './formElements/Url';
+import styles from './Form.less';
 
 
 const Form = React.createClass({
@@ -42,7 +43,7 @@ const Form = React.createClass({
 
   render() {
     return (
-      <div className="submitForm">
+      <div className={styles.Form}>
         <h4>Submit your 15 minute video entry</h4>
 
         <form onSubmit={this.onSubmit} validate>
@@ -52,13 +53,13 @@ const Form = React.createClass({
                  isValid={titleValid => this.setState({titleValid})}></Title>
 
           <Url url={this.state.url}
-                 onChange={url => this.setState({url})}
-                 isValid={urlValid => this.setState({urlValid})}></Url>
+               onChange={url => this.setState({url})}
+               isValid={urlValid => this.setState({urlValid})}></Url>
 
 
           <Name name={this.state.name}
-                 onChange={name => this.setState({name})}
-                 isValid={nameValid => this.setState({nameValid})}></Name>
+                onChange={name => this.setState({name})}
+                isValid={nameValid => this.setState({nameValid})}></Name>
 
 
           <Email email={this.state.email}

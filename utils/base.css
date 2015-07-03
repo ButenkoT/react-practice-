@@ -8,11 +8,11 @@ body {
 }
 
 @media (max-width: 480px) {
-    .submitForm, .videosList{
+    .submitForm, .videosList {
         max-width: 27rem;
     }
 
-    form{
+    form {
         max-width: 20rem;
     }
 }
@@ -33,116 +33,85 @@ h4 {
     font-size: 1.1rem;
 }
 
-.mainContent{
+.mainContent {
     max-width: 60rem;
     padding: 0.8rem;
     margin: 0 auto;
 }
 
-.submitForm, .videosList{
+.videosList {
     max-width: 55rem;
     margin: 0 auto;
 }
 
-.submitForm h4{
-    text-align: center;
-    margin: 1rem;
-}
-
-form div{
-    margin-bottom: 1rem;
-}
-
-form{
-    border-bottom: 0.06rem solid rgba(0,0,0,1);
-}
-
-form, ol, .videosListHeader{
+ol, .videosListHeader {
     margin: 0 auto;
     max-width: 30rem;
     padding: 1rem 1rem;
 }
 
-form input{
-    width: 25rem;
-    height: 2rem;
-    display: block;
-}
-
-.error{
-    color: rgba(255, 0, 0, 1);
-}
-
-button{
-    height: 2rem;
-}
-
-button:hover{
-    box-shadow: 0.3rem 0.3rem 1rem rgba(142, 85, 47, 1);
-}
-
-.competitionVideo{
+.competitionVideo {
     margin-bottom: 1.5rem;
     box-sizing: border-box;
 }
 
-.votes, img, .videoDescription, .videoInfo, .sorting, .videosList h4{
+.votes, img, .videoDescription, .videoInfo, .sorting, .videosList h4 {
     display: inline-block;
 }
 
-.votes, .coverImage, .videoDescription{
+.votes, .coverImage, .videoDescription {
     vertical-align: top;
 }
 
-.votes{
+.votes {
     width: 2.3rem;
     text-align: center;
     padding-top: 0.2rem;
     box-sizing: border-box;
 }
 
-.videosList h4{
+.videosList h4 {
     margin: 0 3rem;
 }
 
-.votes img{
+.votes img {
     height: 2.3rem;
     margin-bottom: 0.1rem;
 }
 
-.votes img:hover{
+.votes img:hover {
     height: 2.4rem;
 }
 
-.votes p:last-child, .videoInfo{
+.votes p:last-child, .videoInfo {
     font-size: 0.6rem;
 }
 
-.videoInfo{
+.videoInfo {
     vertical-align: bottom;
 }
 
-.coverImage{
+.coverImage {
     margin: 0 0.3rem;
     box-sizing: border-box;
 }
 
-.videoDescription{
+.videoDescription {
     width: 18rem;
     padding-left: 1rem;
 }
 
-.videoDescription a{
+.videoDescription a {
     display: block;
     height: 3.5rem;
-    overflow:hidden;
+    overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     text-decoration: none;
     font-weight: bold;
 }
 
-.videoDescription a:hover{
+.videoDescription a:hover {
     overflow: visible;
     width: 26rem;
     white-space: normal;

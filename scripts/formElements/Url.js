@@ -1,14 +1,28 @@
 import React from 'react';
 import url from 'url';
-
+import styles from '../Form.less';
+import querystring from 'querystring';
+import path from 'path';
 
 //const isValid = url => /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(url);
 
-function isValid(videoUrl){
+function isValid(videoUrl) {
   let urlObject = url.parse(videoUrl);
-  if ((urlObject.hostname === "www.youtube.com" || urlObject.hostname === "youtu.be") && /[\w]{0,200}/.test(videoUrl)){
+  console.log(urlObject);
+
+  let queryCode = querystring.parse(urlObject.query);
+  let id = queryCode.v;
+  let myApiKey = "AIzaSyBrQBtzrVS8uokkoERCzSbyDevif0zFXoI";
+
+  let x = "https://www.googleapis.com/youtube/v3/videos?id={id}&key={myApiKey}&part=contentDetails";
+
+  let videoLength = querystring.parse(x);
+  console.log (videoLength);
+
+  if ((urlObject.hostname === "www.youtube.com" || urlObject.hostname === "youtu.be") && /[\w]{0,200}/.test(videoUrl)) {
     return true;
   }
+
 }
 
 const Url = React.createClass({
@@ -63,7 +77,7 @@ const Url = React.createClass({
   //},
 
   render(){
-    return(
+    return (
       <div>YouTube URL
         <input
           value={this.props.url}
@@ -71,7 +85,7 @@ const Url = React.createClass({
           type="text"
           required/>
         <br/>
-        {this.state.urlError ? <span className="error">Only YouTube videos are allowed</span> : null}
+        {this.state.urlError ? <span className={styles.error}>Only YouTube videos are allowed</span> : null}
       </div>
     );
   }

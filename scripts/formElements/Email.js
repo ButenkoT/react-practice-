@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../Form.less';
 
 const isValid = email => /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(email);
 
@@ -46,7 +47,7 @@ const Email = React.createClass({
           type="text"
           placeholder="(optional)"/>
         <br/>
-        {this.state.emailError ? <span className="error">Invalid email</span> : null}
+        {this.state.emailError ? <span className={styles.error}>Invalid email</span> : null}
       </div>
     );
   }

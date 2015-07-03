@@ -1,4 +1,6 @@
 import React from 'react';
+import styles from '../Form.less';
+
 
 const isValid = name => /[\w\s]{0,50}/.test(name);
 
@@ -34,7 +36,7 @@ const Name = React.createClass({
   },
 
   render(){
-    return(
+    return (
       <div>Your name
         <input
           value={this.props.name}
@@ -42,10 +44,10 @@ const Name = React.createClass({
           type="text"
           placeholder="anonymous"/>
         <br/>
-        {this.state.nameError ? <span className="error">Name should be not longer then 50 symbols</span> : null}
+        {this.state.nameError ? <span className={styles.error}>Name should be not longer then 50 symbols</span> : null}
       </div>
     );
-    }
+  }
 });
 
 export default Name;
