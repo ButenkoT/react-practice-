@@ -1,2 +1,4 @@
-//const testsContext = require.context('.', true, /\.spec$/);
-//testsContext.keys().forEach(testsContext);
+import glob from 'glob';
+
+
+glob.sync('**/*-test.js', {realpath: true, cwd: __dirname}).forEach(require);

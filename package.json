@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "description": "Youtube video competition",
   "scripts": {
-    "start": "node server.js",
-    "build": "webpack"
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "test": "babel-node tests"
   },
   "repository": {
     "type": "git",
@@ -24,21 +25,30 @@
   },
   "homepage": "https://github.com/ButenkoT/react-practice-",
   "devDependencies": {
-    "babel-core": "^5.6.15",
-    "babel-loader": "^5.2.2",
-    "css-loader": "^0.15.1",
-    "json-loader": "^0.5.2",
+    "babel": "^5",
+    "babel-core": "^5",
+    "babel-loader": "^5",
+    "css-loader": "^0.21.0",
+    "glob": "^5.0.15",
+    "json-loader": "^0.5.3",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.1",
     "nightwatch": "^0.8.6",
-    "react-hot-loader": "^1.2.7",
+    "react-hot-loader": "^1.3.0",
     "selenium-standalone": "^4.7.1",
-    "style-loader": "^0.12.3",
-    "webpack": "^1.10.0",
-    "webpack-dev-server": "^1.10.1"
+    "style-loader": "^0.13.0",
+    "tap-nyan": "0.0.2",
+    "tap-xunit": "^1.2.1",
+    "tape": "^4.2.2",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
     "browser-request": "^0.3.3",
-    "lodash": "^3.10.0",
-    "moment": "^2.10.3",
+    "flux": "^2.1.1",
+    "keymirror": "^0.1.1",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
     "react": "^0.14.2",
     "react-dom": "^0.14.2"
   }

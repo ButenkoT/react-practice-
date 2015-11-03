@@ -11,3 +11,11 @@
 //  });
 //
 //});
+
+import test from 'tape';
+import Header from '../scripts/Header';
+
+test('Header', t => {
+  t.ok(Header instanceof Function, 'should be function');
+  t.end();
+});

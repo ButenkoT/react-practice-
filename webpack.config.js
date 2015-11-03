@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'eval',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     './scripts/index'
   ],
@@ -18,7 +18,7 @@ module.exports = {
     new webpack.NoErrorsPlugin()
   ],
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.jsx']
   },
   module: {
     loaders: [
@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loader: "style!css?module!less?sourceMap"
+        loader: "style!css?modules!less?sourceMap"
       },
       {
         test: /\.json$/,
@@ -43,5 +43,13 @@ module.exports = {
   },
   stats: {
     colors: true
+  },
+  devServer: {
+    hot: true,
+    historyApiFallback: true,
+    stats: {
+      chunkModules: false,
+      colors: true
+    }
   }
 };
