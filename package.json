@@ -1,8 +1,8 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-boilerplateq",
   "private": true,
   "version": "1.0.0",
-  "description": "Boilerplate for ReactJS with hot code reloading, webpack, babel and karma",
+  "description": "Youtube video competition",
   "scripts": {
     "start": "node server.js",
     "build": "webpack",
@@ -11,25 +11,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ButenkoT/react-boilerplate.git"
+    "url": "https://github.com/ButenkoT/react-practice-.git"
   },
   "keywords": [
     "react",
-    "reactjs",
-    "boilerplate",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
+    "babel",
+    "hot-loader",
     "webpack"
   ],
   "author": "Tanya Butenko <tanya@butenko.me> (http://github.com/ButenkoT)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ButenkoT/react-boilerplate/issues"
+    "url": "https://github.com/ButenkoT/react-practice-/issues"
   },
-  "homepage": "https://github.com/ButenkoT/react-boilerplate",
+  "homepage": "https://github.com/ButenkoT/react-practice-",
   "devDependencies": {
     "babel-core": "^5.6.15",
     "babel-loader": "^5.2.2",
@@ -47,8 +42,10 @@
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
+    "browser-request": "^0.3.3",
     "lodash": "^3.10.0",
     "moment": "^2.10.3",
-    "react": "^0.13.3"
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2"
   }
 }

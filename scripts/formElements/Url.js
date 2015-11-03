@@ -3,21 +3,29 @@ import url from 'url';
 import styles from '../Form.less';
 import querystring from 'querystring';
 import path from 'path';
+import request from 'browser-request';
 
 //const isValid = url => /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(url);
 
 function isValid(videoUrl) {
   let urlObject = url.parse(videoUrl);
-  console.log(urlObject);
+  //console.log(urlObject);
 
   let queryCode = querystring.parse(urlObject.query);
   let id = queryCode.v;
   let myApiKey = "AIzaSyBrQBtzrVS8uokkoERCzSbyDevif0zFXoI";
 
   let x = "https://www.googleapis.com/youtube/v3/videos?id={id}&key={myApiKey}&part=contentDetails";
+  console.log(id);
+  request(x, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+
+      console.log(body); // Show the HTML for the Modulus homepage.
+    }
+  });
 
   let videoLength = querystring.parse(x);
-  console.log (videoLength);
+  //console.log (videoLength);
 
   if ((urlObject.hostname === "www.youtube.com" || urlObject.hostname === "youtu.be") && /[\w]{0,200}/.test(videoUrl)) {
     return true;
